@@ -10,7 +10,7 @@ buttons_labels = ['price', 'model_year', 'model', 'condition', 'cylinders', 'fue
 list_cols = ['price', 'model_year', 'cylinders', 'odometer']
 
 # Leemos el dataset y lo guardamos en la variable data
-data = pd.read_csv('/home/huanho/Sprint5_Project/vehicles_us.csv')
+data = pd.read_csv('vehicles_us.csv')
 
 # Reemplazamos valores ausentes en las columnas correspondientes
 data['paint_color'] = data['paint_color'].fillna('unknown')
