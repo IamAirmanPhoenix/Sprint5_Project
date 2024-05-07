@@ -10,7 +10,7 @@ buttons_labels = ['price', 'model_year', 'model', 'condition', 'cylinders', 'fue
 list_cols = ['price', 'model_year', 'cylinders', 'odometer']
 
 # Leemos el dataset y lo guardamos en la variable data
-data = pd.read_csv('vehicles_us.csv')
+data = pd.read_csv('/home/huanho/Sprint5_Project/vehicles_us.csv')
 
 # Reemplazamos valores ausentes en las columnas correspondientes
 data['paint_color'] = data['paint_color'].fillna('unknown')
@@ -123,7 +123,7 @@ if scatter_button:
         '''
 
         if scatter_xval in list_cols:
-            xval_data = data[data[hist_val] > 0]
+            xval_data = data[scatter_xval] > 0
         else:
             xval_data = data
 
@@ -138,7 +138,7 @@ if scatter_button:
         '''
 
         if scatter_yval in list_cols:
-            yval_data = data[data[hist_val] > 0]
+            yval_data = data[scatter_xval] > 0
         else:
             yval_data = data
 
@@ -158,15 +158,15 @@ if scatter_button:
             data_val = data
 
         else:
-            data_val = xval_data
+            data_val = data[xval_data]
             
     else:
 
         if (xval_name not in list_cols) & (yval_name in list_cols):
-            data_val = yval_data
+            data_val = data[yval_data]
 
         elif (xval_name in list_cols) & (yval_name not in list_cols):
-            data_val = xval_data
+            data_val = data[xval_data]
 
         elif (xval_name in list_cols) & (yval_name in list_cols):
             data_val = data[xval_data & yval_data]
